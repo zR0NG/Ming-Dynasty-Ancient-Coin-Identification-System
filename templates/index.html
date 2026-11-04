@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+    <!-- 页面标题 -->
+    <h2 class="page-title">明代古钱币智能识别系统</h2>
+
+    <!-- 功能入口（三栏布局，匹配整体风格） -->
+    <div style="display: flex; justify-content: space-around; margin: 50px 0;">
+        <!-- 单钱币识别入口 -->
+        <div style="width: 25%; padding: 30px; border: 1px solid #e0e0e0; border-radius: 4px; text-align: center;">
+            <p style="font-size: 18px; color: #333; margin-bottom: 20px;">单钱币正背面识别</p>
+            <a href="{{ url_for('single_coin') }}" style="display: inline-block; padding: 8px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 4px; font-size: 14px;">
+                进入识别
+            </a>
+        </div>
+
+        <!-- 多钱币批量识别入口 -->
+        <div style="width: 25%; padding: 30px; border: 1px solid #e0e0e0; border-radius: 4px; text-align: center;">
+            <p style="font-size: 18px; color: #333; margin-bottom: 20px;">多钱币批量识别</p>
+            <a href="{{ url_for('multi_coin') }}" style="display: inline-block; padding: 8px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 4px; font-size: 14px;">
+                批量识别
+            </a>
+        </div>
+
+        <!-- 已分类查询入口 -->
+        <div style="width: 25%; padding: 30px; border: 1px solid #e0e0e0; border-radius: 4px; text-align: center;">
+            <p style="font-size: 18px; color: #333; margin-bottom: 20px;">已分类钱币查询</p>
+            <a href="{{ url_for('classified') }}" style="display: inline-block; padding: 8px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 4px; font-size: 14px;">
+                查看分类
+            </a>
+        </div>
+    </div>
+
+    <!-- 【手动指定】可识别钱币类别展示 -->
+    <div style="width: 80%; margin: 40px auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 4px;">
+        <h3 style="font-size: 16px; color: #333; text-align: center; margin-bottom: 20px; font-weight: bold;">可识别的26类明代古钱币</h3>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; font-size: 14px; color: #666; text-align: center;">
+            <div style="padding: 8px; background: #f8f9fa; border-radius: 4px;">洪武通宝</div>
+            <div style="padding: 8px; background: #f8f9fa; border-radius: 4px;">永乐通宝</div>
+            <div style="padding: 8px; background: #f8f9fa; border-radius: 4px;">宣德通宝</div>
+            <div style="padding: 8px; background: #f8f9fa; border-radius: 4px;">正统通宝</div>
+            <div style="padding: 8px; background: #f8f9fa; border-radius: 4px;">景泰通宝</div>
+            <div style="padding: 8px; background: #f8f9fa; border-radius: 4px;">天顺通宝</div>
+            <div style="padding: 8px; background: #f8f9fa; border-radius: 4px;">成化通宝</div>
+            <div style="padding: 8px; background: #f8f9fa; border-radius: 4px;">弘治通宝</div>
+            <div style="padding: 8px; background: #f8f9fa; border-radius: 4px;">正德通宝</div>
+            <div style="padding: 8px; background: #f8f9fa; border-radius: 4px;">嘉靖通宝</div>
+            <div style="padding: 8px; background: #f8f9fa; border-radius: 4px;">隆庆通宝</div>
+            <div style="padding: 8px; background: #f8f9fa; border-radius: 4px;">万历通宝</div>
+            <div style="padding: 8px; background: #f8f9fa; border-radius: 4px;">泰昌通宝</div>
+            <div style="padding: 8px; background: #f8f9fa; border-radius: 4px;">天启通宝</div>
+            <div style="padding: 8px; background: #f8f9fa; border-radius: 4px;">崇祯通宝</div>
+            <div style="padding: 8px; background: #f8f9fa; border-radius: 4px;">弘光通宝</div>
+            <div style="padding: 8px; background: #f8f9fa; border-radius: 4px;">隆武通宝</div>
+            <div style="padding: 8px; background: #f8f9fa; border-radius: 4px;">永历通宝</div>
+            <div style="padding: 8px; background: #f8f9fa; border-radius: 4px;">大顺通宝</div>
+            <div style="padding: 8px; background: #f8f9fa; border-radius: 4px;">大西通宝</div>
+            <div style="padding: 8px; background: #f8f9fa; border-radius: 4px;">兴朝通宝</div>
+            <div style="padding: 8px; background: #f8f9fa; border-radius: 4px;">永昌通宝</div>
+            <div style="padding: 8px; background: #f8f9fa; border-radius: 4px;">大明通宝</div>
+            <div style="padding: 8px; background: #f8f9fa; border-radius: 4px;">弘光通宝</div>
+            <div style="padding: 8px; background: #f8f9fa; border-radius: 4px;">隆武通宝</div>
+            <div style="padding: 8px; background: #f8f9fa; border-radius: 4px;">昭武通宝</div>
+        </div>
+    </div>
+
+    <!-- 说明文字 -->
+    <div style="text-align: center; font-size: 14px; color: #666; margin-top: 30px;">
+        <p>基于ResNet50+YOLOv8深度学习模型 | 支持26类明代古钱币识别与分类</p>
+    </div>
+{% endblock %}

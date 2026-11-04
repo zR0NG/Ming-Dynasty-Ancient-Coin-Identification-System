@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+    <!-- 导航栏选中态 -->
+    <style>
+        .navbar a[href="{{ url_for('multi_coin') }}"] {
+            background: #007bff; color: white; border-bottom: 2px solid #0056b3;
+        }
+    </style>
+
+    <h2 class="page-title" style="text-align: center; font-size: 20px; font-weight: bold; margin: 20px 0;">多钱币批量识别</h2>
+
+    <!-- 简化上传区域（单框+无冗余按钮） -->
+    <div style="width: 80%; margin: 0 auto; padding: 20px; border: 2px dashed #007bff; border-radius: 4px; text-align: center;">
+        <p style="color: #dc3545; margin-bottom: 5px;">
+            <span style="font-size: 16px;">✦</span> 上传包含多枚钱币的图片
+        </p>
+        <p style="font-size: 12px; color: #666; margin-bottom: 10px;">支持格式: jpg、png、gif、bmp（任意尺寸 | 建议单张≤10枚）</p>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="multi_img" accept="image/*" style="width: 90%; padding: 6px; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 10px;">
+            <button type="submit" style="background: #007bff; color: white; border: none; padding: 8px 20px; border-radius: 4px; cursor: pointer;">
+                批量识别并归类
+            </button>
+        </form>
+    </div>
+
+    <!-- 【新增】多钱币识别准确率提示 -->
+    <div style="width: 80%; margin: 15px auto; padding: 10px; background: #fff3cd; color: #856404; border: 1px solid #ffeeba; border-radius: 4px; text-align: center; font-size: 13px;">
+        ⚠️ {{ accuracy_note }}
+    </div>
+
+    <!-- 原图展示 -->
+    {% if original_img_url %}
+        <div style="text-align: center; margin: 20px 0;">
+            <img src="{{ original_img_url }}" alt="多钱币原图" style="width: 400px; height: auto; object-fit: contain; border: 1px solid #eee; padding: 5px;">
+            <p style="font-size: 14px; color: #666; margin-top: 5px;">上传的原图</p>
+        </div>
+    {% endif %}
+
+    <!-- 识别结果提示 -->
+    {% if results %}
+        <div style="width: 80%; margin: 0 auto; padding: 10px; background: #d4edda; color: #155724; border-radius: 4px; text-align: center;">
+            识别结果：共检测到 {{ results|length }} 枚钱币
+        </div>
+    {% endif %}
+
+    <!-- 识别结果（显示完整信息+简化布局） -->
+    {% if results %}
+        <div style="width: 80%; margin: 20px auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+            {% for res in results %}
+                <div style="padding: 10px; border: 1px solid #eee; border-radius: 4px; text-align: center;">
+                    <img src="{{ res.img_path }}" alt="识别的钱币" style="width: 150px; height: 150px; object-fit: contain; margin-bottom: 8px;">
+                    <p style="font-size: 14px; font-weight: bold; margin-bottom: 5px;">{{ res.年号 }}通宝</p>
+                    <!-- 完整信息展示 -->
+                    <p style="font-size: 12px; color: #666; line-height: 1.5;">
+                        年代：{{ res.年代 }}<br>
+                        <!-- 【新增】可信度展示 -->
+                        可信度：{{ res.可信度|default('暂无数据') }}<br>
+                        可信度等级：{{ res.可信度等级|default('暂无数据') }}<br>
+                        出土地点：{{ res.出土地点 }}<br>
+                        铸地：{{ res.铸地 }}
+                    </p>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <footer style="text-align: center; font-size: 12px; color: #999; margin-top: 50px;">
+        © 2025 明代古钱币智能识别系统 | 版权所有
+    </footer>
+{% endblock %}

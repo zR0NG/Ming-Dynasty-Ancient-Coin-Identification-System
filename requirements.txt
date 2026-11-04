@@ -1,0 +1,17 @@
+# Web 服务
+flask>=2.0.0
+
+# 深度学习框架（如需 GPU 加速，请按本机 CUDA 版本从 pytorch.org 安装对应版本）
+torch>=2.0.0
+torchvision>=0.15.0
+
+# 目标检测与实例分割
+ultralytics>=8.0.0
+
+# 图像处理与数值计算
+pillow>=9.0.0
+numpy>=1.23.0
+
+# 训练过程可视化
+matplotlib>=3.5.0
+tqdm>=4.64.0

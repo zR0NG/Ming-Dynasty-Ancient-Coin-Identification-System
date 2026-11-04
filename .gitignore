@@ -1,0 +1,30 @@
+# ===== 模型权重（体积过大，单独分发，见 README）=====
+*.pth
+# 根目录下未被代码引用的预训练模型
+/yolov8s.pt
+
+# ===== 数据集（体积过大，不纳入版本管理）=====
+dataset/
+
+# ===== 运行时产物 =====
+static/upload/
+static/classified/
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.cache
+venv/
+.venv/
+env/
+.pytest_cache/
+
+# ===== IDE =====
+.idea/
+.vscode/
+*.swp
+
+# ===== 系统 =====
+.DS_Store
+Thumbs.db
+desktop.ini

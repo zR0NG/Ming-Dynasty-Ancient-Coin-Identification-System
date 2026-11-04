@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>明代古钱币智能识别系统</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+            background: #f8f9fa;
+            font-size: 14px;
+        }
+        /* 导航栏（完全匹配截图） */
+        .navbar {
+            background: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 0 20px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        .navbar a {
+            color: #333;
+            text-decoration: none;
+            padding: 12px 20px;
+            display: inline-block;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .navbar a:hover {
+            background: #f5f5f5;
+        }
+        .navbar a.active {
+            background: #007bff;
+            color: white;
+            border-bottom: 2px solid #0056b3;
+        }
+        /* 容器（匹配截图宽度和阴影） */
+        .container {
+            max-width: 950px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.08);
+        }
+        /* 页面标题（统一风格） */
+        .page-title {
+            text-align: center;
+            margin: 10px 0 30px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <div class="navbar">
+        <a href="{{ url_for('index') }}" {% if request.path == '/' %}class="active"{% endif %}>首页</a>
+        <a href="{{ url_for('single_coin') }}" {% if request.path == '/single_coin' %}class="active"{% endif %}>单钱币正背面识别</a>
+        <a href="{{ url_for('multi_coin') }}" {% if request.path == '/multi_coin' %}class="active"{% endif %}>多钱币批量识别</a>
+        <a href="{{ url_for('classified') }}" {% if request.path == '/classified' %}class="active"{% endif %}>已分类钱币查询</a>
+    </div>
+
+    <!-- 内容区 -->
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- 页脚（极简风格） -->
+    <footer style="text-align: center; margin: 30px 0; color: #999; font-size: 12px;">
+        © 2025 明代古钱币智能识别系统 | 版权所有
+    </footer>
+</body>
+</html>
